@@ -1,0 +1,42 @@
+
+<!--Author: Vuochly Ky-->
+<html>
+<head>
+    <title>Right Now</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var days = { 0:'Sunday', 1:'Monday', 2:'Tueday', 3:'Wednesday', 4:'Thursday', 5:'Friday', 6:'Saturday'};
+        //var date = new Date("October 28, 2017 00:00:3");
+        $(document).ready(function(){
+        var interval = setInterval(function(){
+            var date = new Date();
+            var dayOfWeek = days[date.getDay()]; //Takes the int which represent the day of the week to retrieve the string DOTW
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+            var todayDate = dayOfWeek + "<br><br>" + month + "/" + day + "/" + year
+
+            var hr = (date.getHours()>12? (date.getHours() % 12): date.getHours()); //Change the hour to ampm hours
+            hr = hr == 0? 12:hr; //turn 0 to 12
+            //Make sure to display as 2-digits. Ex: 1 -> 01
+            var min = date.getMinutes() < 10 ? "0" + date.getMinutes():date.getMinutes();
+            var sec = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+            var rightNow = (hr < 10?"0"+hr:hr) + ":" + min + ":" + sec;
+
+            $("#time").html("Today is:<br><br>" + todayDate + "<br><br>" + rightNow);
+            },100);
+
+        });
+    </script>
+    <style>
+        #time{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="time" align="left" style="font-size:5em"></h1>
+</body>
+
+</html>
