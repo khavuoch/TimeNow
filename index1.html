@@ -14,7 +14,7 @@
             var day = date.getDate();
             var month = date.getMonth() + 1;
             var year = date.getFullYear();
-            var todayDate = dayOfWeek + "<br><br>" + month + "/" + day + "/" + year
+            var todayDate = dayOfWeek + "<br>" + month + "/" + day + "/" + year
 
             var hr = (date.getHours()>12? (date.getHours() % 12): date.getHours()); //Change the hour to ampm hours
             hr = hr == 0? 12:hr; //turn 0 to 12
@@ -23,7 +23,7 @@
             var sec = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
             var rightNow = (hr < 10?"0"+hr:hr) + ":" + min + ":" + sec;
 
-            $("#time").html("Today is:<br><br>" + todayDate + "<br><br>" + rightNow);
+            $("#time").html(todayDate + "<br>" + rightNow);
             },100);
 
         });
